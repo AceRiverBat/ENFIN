@@ -4,8 +4,23 @@ let h2Y = document.createElement("h2");
 IDyear.appendChild(h2Y);
 let NowYear = new Date();
 let TodayYear = NowYear.getFullYear();
-h2Y.innerHTML = TodayYear;
+h2Y.innerHTML = '<a href="#" id="preY" class="previous round">&#8249;</a>' + TodayYear + '<a href="#" id="nextY" class="next round">&#8250;</a>';
 
+const PreY = document.getElementById("preY");
+PreY.onclick = function () {
+        const el = TodayYear;
+        TodayYear--;
+        console.log(el);
+
+}
+
+const NextY = document.getElementById("nextY");
+NextY.onclick = function () {
+        const el = TodayYear;
+        TodayYear++;
+        console.log(el);
+
+}
 //MOIS
 const IDmonth = document.getElementById("month");
 let h3M = document.createElement("h3");
@@ -13,7 +28,31 @@ IDmonth.appendChild(h3M);
 let Nowmonths = (new Date).getMonth();
 let months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 
-h3M.innerHTML = months[Nowmonths];
+h3M.innerHTML = '<a href="#" id="prem" onclick="previous()"class="previous round">&#8249;</a>' + months[Nowmonths] + '<a href="#" id="nextm" class="next round">&#8250;</a>';
+
+// const previous = document.getElementById("prem");
+// previous.onclick = function () {
+//     let nouvPrev = '<a href="#" id="prem" onclick="previous()"class="previous round">&#8249;</a>' + months[Nowmonths-1] + '<a href="#" id="nextm" class="next round">&#8250;</a>';
+//     h3M.innerHTML = nouvPrev;
+//     console.log(months[Nowmonths-1]);
+// }
+
+const Previous = document.getElementById("prem");
+Previous.onclick = function () {
+        const el = months[Nowmonths];
+        months[Nowmonths--];
+        console.log(el);
+
+}
+
+const Next = document.getElementById("nextm");
+Next.onclick = function () {
+        const el = months[Nowmonths];
+        months[Nowmonths++];
+        console.log(el);
+
+}
+
 
 //JOURS
 const IDday = document.getElementById("day");
@@ -78,5 +117,5 @@ getMois();
 
 let d = NowYear.getDate();
 let p = document.getElementsByTagName('p')[d-1];
-p.style.color = 'red'
-
+p.style.backgroundColor = 'rgba(224, 80, 80, 0.637)';
+p.style.padding = '3em';
